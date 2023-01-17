@@ -1,0 +1,389 @@
+{% load i18n %}
+<!doctype html>
+<html lang="es">
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+
+    <meta name="theme-color" media="(prefers-color-schemre:light)" content="#aafaa">
+    <title>HC</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <!-- <nav class="navbar navbar-light bg-light">
+      <a class="navbar-brand">Navbar</a>
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </nav> -->
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+
+
+
+
+    
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'ProyectoWebApp/assets/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    {% comment %} <link href="{% static 'ProyectoWebApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"> {% endcomment %}
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="{% static 'ProyectoWebApp/css/dashboard.css' %}" rel="stylesheet">
+  </head>
+  <body>
+    
+    
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
+     <img class="img-fluid w-5px"   style="
+     width:30px;"/>
+      HC </a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  {% comment %} <input class="form-control form-control-dark w-100" type="text" placeholder="Buscar"  aria-label="Buscar"> {% endcomment %}
+
+
+
+  {% comment %} <button type="button" class="btn btn-warning position-relative marginbtn  hidden.bs.collapse" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+    Proximas
+   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">+99 <span class="visually-hidden">unread messages</span></span>
+   
+  </button> {% endcomment %}
+
+<!--   
+  <div style="min-height: 120px;">
+    <div class="collapse " id="collapseWidthExample">
+      <div class="card card-body " style="width: 300px;">
+        This is some placeholder content for a horizontal collapse. It's hidden by default and shown when triggered.
+      </div>
+    </div>
+  </div> -->
+
+  
+
+  <div class="navbar-nav">
+    
+
+    <div class="btnCerrarSes">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="{% url 'login' %}" style="color:#fff"> Cerrar Sesión</a>
+    </div>
+  </div>
+  </div>
+    
+
+  
+</header>
+
+<div class="container-fluid">
+  <div class="row" >
+    
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" >
+      <div class="position-sticky pt-3" style="background:#1b4965;padding-bottom:300%;" >
+        <ul class="nav flex-column">
+          
+
+          <section class="UserAct">
+            <img  class="userIco" src="{% static 'ProyectoWebApp/img/us.jpg' %}"/>
+            <div class="usertext">
+            {% if user.is_authenticated %}
+            <h6> {{ user.username }}</h6>
+            {% comment %} <h8>{{ user.groups.all.first }}</h8> {% endcomment %}
+            {% else %}
+            <a href="{% url 'login' %}" style="color: white;">Iniciar sesión</a> &nbsp; &nbsp; 
+            {% comment %} <a href="{% url 'autenticacion' %}" style="color: white;">Registrarse</a> {% endcomment %}
+            {% endif %}
+            <div>
+            <i class="fa fa-circle text-success"></i>
+            en línea
+            </div>
+            </div>
+          </section>
+
+          <span class="span-nav-var" >Opciones de Menú</span>
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted" >
+            
+            <a class="link-secondary" href="#" aria-label="Add a new report">
+              <span data-feather="plus-circle"></span>
+            </a>
+          </h6>
+          <li class="navegacion" >
+            <a class="nav-link {% if request.path == '/Registro/' %} active {% endif %}" aria-current="page" href="{%  url 'Registro' %}" >
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+             <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+             </svg>
+              Registro
+            </a>
+          </li>
+          <li class="navegacion">
+            <a class="nav-link {% if request.path == '/Reportes/' %} active {% endif %}" href="{% url 'Reportes' %}" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+            <span data-feather="bar-chart-2"></span>
+            Reportes
+            </a>
+            <div class="collapse" id="orders-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small" 
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+              </svg>
+          <li><a class="nav-link {% if request.path == '/Reportes/' %} active {% endif %}" href="{% url 'Reportes' %}" class="nav-item">Por Fecha</a></li>
+          <li><a class="nav-link {% if request.path == '/Reportesdiag/' %} active {% endif %}" href="{% url 'Reportesdiag' %}" class="nav-item">Por Diagnostico</a></li>
+          {% comment %} <li><a href="{% url 'Precios' %}" class="nav-item">Precios</a></li> {% endcomment %}
+          {% comment %} {% if 'COMERCIAL' ==  request.user.groups.all.0.name or request.user.is_staff %}
+          <li class="navegacion" >
+            <a class="nav-link {% if request.path == '/Solicitudesregistradas/' %} active {% endif %}" aria-current="page" href="{%  url 'Solicitudesregistradas' %}" >
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+             <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+             </svg>
+              Solicitudes Registradas
+            </a>
+          </li>
+          <li class="navegacion" >
+          <a class="nav-link {% if request.path == '/Solicitudesrespuesta/' %} active {% endif %}" aria-current="page" href="{%  url 'Solicitudesrespuesta' %}" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+            </svg>
+            Solicitudes por respuesta
+          </a>
+        </li>
+          <li class="navegacion" >
+            <a class="nav-link {% if request.path == '/Empresa/' %} active {% endif %}" aria-current="page" href="{%  url 'Empresa' %}" >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16" >
+                <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"/>
+                <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
+              </svg>
+              Empresas 
+            </a>
+          </li>
+          <li class="navegacion">
+            <a class="nav-link {% if request.path == '/Contactos/' %} active {% endif %}" href="{%  url 'Contactos' %}"  >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+              </svg>
+              Contactos 
+            </a>
+          </li>
+          <li class="navegacion">
+            <a class="nav-link {% if request.path == '/Propuestas/' %} active {% endif %}" href="{%  url 'Propuestas' %}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-plus" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z"/>
+                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+              </svg> 
+              Propuestas
+            </a>
+          </li>
+          <li class="navegacion">
+            
+            <a  class="nav-link {% if request.path == '/Productos/' %} active {% endif %}" href="{%  url 'Productos' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                </svg>
+              Productos 
+            </a>
+          </li>
+          
+          <li class="navegacion">
+              <a  class="nav-link {% if request.path == '/Paneles/' %} active {% endif %}" href="{%  url 'Paneles' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07Z"/>
+                </svg> 
+              Reportes
+              </a>
+            </li>
+          {% endif %}
+          {% if request.user.is_staff %}
+          <li class="navegacion">
+              <a class="nav-link {% if request.path == '/Usuarios/' %} active {% endif %}" href="{% url 'Usuarios' %}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+                  <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
+                </svg> 
+
+                 Usuarios
+              </a>
+          </li> 
+          {% endif %} {% endcomment %}
+          </ul>
+         
+          
+
+        <!--<ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Current month
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Last quarter
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Social engagement
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Year-end sale
+            </a>
+          </li>
+        </ul> -->
+
+
+
+
+
+
+      </div>
+    </nav>
+      
+    {% block content %}
+
+<section>
+  
+  
+  <div style="justify-content:center" class="bienvenida">
+    <h1></h1>
+    <img class="img-b" src="{% static 'ProyectoWebApp/img/HC2.jpg' %}" alt="">
+  </div>
+
+</section>
+
+    {% endblock %}
+    
+    <!-- <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="..." class="rounded me-2" alt="...">
+        <strong class="me-auto">Bootstrap</strong>
+        <small>11 mins ago</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Hello, world! This is a toast message.
+      </div>
+    </div>
+     -->
+
+
+
+  </div>
+
+  
+      <footer class="footer " >    
+        
+      <div class="">
+        <div class="pull-right version">
+          <b>Versión</b> 1.0
+        </div >
+        <!-- Default to the left -->
+    </div>
+      <strong>Copyright © 2022</strong>
+    </footer>
+</div>
+
+<!-- 
+        <script>
+            const myModal = document.getElementById('myModal')
+      const myInput = document.getElementById('myInput')
+
+      myModal.addEventListener('shown.bs.modal', () => {
+        myInput.focus()
+      })
+    </script> -->
+
+    <!-- alerta -->
+    
+
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+
+
+              {% if messages %}
+                {% for m in messages %}
+                <script>
+                  Swal.fire({
+                    "title":"{{m}}",
+                    // "text":"{{m}}",
+                    "icon":"success",
+                    "titleColor":"#fff"
+                  })
+               </script>
+               {% endfor %}
+              {% endif %}
+
+
+    <!-- fin alerta -->
+    <script type="text/javascript" src="{% static 'ProyectoWebApp/resubmit.js' %}"></script>
+    <script type="text/javascript" src="{% static 'ProyectoWebApp/alerts.js' %}"></script>
+
+    
+    <script src="{% static 'ProyectoWebApp/assets/dist/js/bootstrap.bundle.min.js' %}"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="{% static 'ProyectoWebApp/dashboard.js' %}"></script>
+      
+      <!-- Bootstrap 5 JavaScript Bundle with Popper -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+      <!-- Stepper JavaScript -->
+      <script>
+        const stepButtons = document.querySelectorAll('.step-button');
+        const progress = document.querySelector('#progress');
+        
+        Array.from(stepButtons).forEach((button,index) => {
+          button.addEventListener('click', () => {
+               progress.setAttribute('value', index * 100 /(stepButtons.length - 1) );//there are 3 buttons. 2 spaces.
+              stepButtons.forEach((item, secindex)=>{
+                  if(index > secindex){
+                      item.classList.add('done');
+                  }
+                  if(index < secindex){
+                      item.classList.remove('done');
+                  }
+              })
+          })
+        })
+      </script>
+
+
+
+      
+    </body>
+</html>
