@@ -1,0 +1,244 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Detalles del Paciente</title>
+	</head>
+	<body>
+		<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+			<h2>
+				<p class="text-danger">{{paciente.nombre|add:' ' |add:paciente.apellido}}</p>
+			</h2>
+		</div>
+		<div class= "container" >
+			<div class="row  style= text-align: center">
+				<div class="col">
+					<div class="card">
+						<div class="card-header">
+							<h4>Datos Personales</h4>
+						</div>
+						<div class="card-body">
+							<b>Cedula:</b> {{paciente.cedula}}</p>
+							<b>Fecha de Nacimiento:</b> {{paciente.fecha_nacimiento}}</p>
+							<b>Genero:</b> {{paciente.genero.nombre}}</p>
+							<b>Estado Civil:</b> {{paciente.estado_civil.nombre}}</p>
+							<b>Departamento:</b> {{paciente.departamento.nombre}}</p>
+							<b>Municipio:</b> {{paciente.municipio.nombre}}</p>
+							<b>Dirección:</b> {{paciente.direccion}}</p>
+							<b>Celular:</b> {{paciente.celular}}</p>
+							<b>Correo:</b> {{paciente.correo}}</p>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card">
+						<div class="card-header">
+							<h4>Datos Complementarios</h4>
+						</div>
+						<div class="card-body">
+							<b>EPS:</b> {{paciente.eps}}</p>
+							<b>Ocupación:</b> {{paciente.ocupacion}}</p>
+							<b>Estudios:</b> {{paciente.estudios}}</p>
+							<b>Origen:</b> {{paciente.origen}}</p>
+							<b>Religion:</b> {{paciente.religion}}</p>
+							<b>Datos Progenitores:</b> {{paciente.datos_prog}}</p>
+							<b>Antecedentes:</b>{{paciente.antecedentes}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+            <br>
+			<div class="row  style= text-align: center">
+				<div class="col">
+					<div class="card">
+						<div class="card-header">
+							<h4>Historia Clinica</h4>
+						</div>
+						<div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Motivo de la consulta:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.motivo}}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Antecedentes del paciente:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.antecedentes_paciente}}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Perfil social:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.perfil}}
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Personalidad:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.personalidad}}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Historia familiar:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.historia_familiar}}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Examen mental:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.examen_mental}}
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Estado de conciencia:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.estado_conciencia}}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Estado de ánimo:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.estado_animo}}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Actividad motora:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.actividad_motora}}
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Asociación y flujo de ideas y características del lenguaje:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.asociacion_ideas}}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Contenido de ideas:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.contenido_ideas}}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Sensibilidad:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.sensibilidad}}
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Memoria:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.memoria}}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Pensamiento:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.pensamiento}}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Resultado del examen:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.resultado_examen}}
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Diagnóstico:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.diagnostico}}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card-header">
+                                        <h4>Plan de orientación psicológica:</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        {{historia.plan_psicologia}}
+                                    </div>
+                                </div>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+               <div class="modal-content">
+                  <div class="modal-header" >
+                     <h5 class="modal-title" id="exampleModalLabel">Datos Historia Clinica</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <form action="" method="POST">
+                     <div class="modal-body">
+                        {% csrf_token %}
+                        <h6 class="modal-title" id="exampleModalLabel">Información HC</h6>
+                        <table>{{formularioHC.as_p}}</table>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <input type="submit" class="btn btn-primary" value= "Guardar">
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
+	</body>
+</html>
+{% endblock %}
