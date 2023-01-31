@@ -33,7 +33,7 @@ class FormularioPaciente(forms.Form):
     #     self.fields['municipios'].queryset = Municipio.objects.none()
     # def clean_departamentos(self):
     #     departamento = self.cleaned_data.get("departamentos")
-    #     if departamento and not Departamento.objects.filter(pk=departamento.pk).exists():
+    #     if departamento and not Departamento.objects.filter(id=departamento.id).exists():
     #         raise forms.ValidationError("Escoja una opción válida. Esa opción no está entre las disponibles.")
     #     return departamento
     # def clean(self):
@@ -42,6 +42,7 @@ class FormularioPaciente(forms.Form):
     #     municipio = cleaned_data.get("municipios")
     #     if municipio and municipio.departamento != departamento:
     #         raise forms.ValidationError("El municipio seleccionado no corresponde al departamento seleccionado")
+        
 class FormularioHistoria(forms.Form):
     motivo = forms.CharField(label='Motivo de la consulta:',  widget=forms.Textarea(attrs={'class': 'form-control'}), required=False)
     antecedentes_paciente = forms.CharField(label='Antecedentes del paciente:',  widget=forms.Textarea(attrs={'class': 'form-control'}), required=False)

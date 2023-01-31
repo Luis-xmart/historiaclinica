@@ -12,6 +12,7 @@ urlpatterns = [
     re_path(r'^editar/(?P<id>\d+)$', views.editar, name='editar'),
     re_path(r'^editarhistoria/(?P<id>\d+)$', views.editarhistoria, name='editarhistoria'),
     re_path(r'^eliminar/(?P<id>\d+)$', views.eliminar, name='eliminar'),
+    path('exportarpdf/<int:id>/', views.export_pdf, name='exportarpdf'),
     
 
     # re_path(r'^empresa/editar/(?P<id>\d+)$', views.editarempresa, name='editarEmpresa'),

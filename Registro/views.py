@@ -4,7 +4,9 @@ from Registro.models import Paciente, Historia, Municipio
 
 from .forms import FormularioPaciente, FormularioHistoria, FormularioPaciente2, FormularioHistoria2, RangoFechasReporte
 
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+from xhtml2pdf import pisa
+from django.template.loader import get_template
 from django.db.models import Q
 # Create your views here.
 
@@ -204,4 +206,30 @@ def reportesdiag(request):
             return render(request, 'Registro/reportediag.html')
             
     else:
-        return render(request, 'Registro/reportediag.html')
+        paciente = Paciente.objects.filter(cedula=search_paciente).first()
+        print('ELSE 1')
+        # id = paciente.id
+        return render(request, 'Registro/reportediag.html', {'paciente': paciente})
+
+
+def export_pdf(request, id):
+    qs = Paciente.objects.filter(id=id).first()
+    id = qs.id
+    historia_clinica = Historia.objects.filter(id_paciente=id).first()
+    # print(qs[0])
+    template_path = 'Registro/pdf.html'
+    context = {'paciente': qs, 'historia': historia_clinica}
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="report.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
+    # if error then show some funny view
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
